@@ -13,8 +13,8 @@ class AccommodationController extends Controller
      */
     public function index()
     {
-        return  Accommodation::all();
-      
+        return Accommodation::all();
+
     }
 
     /**
@@ -22,7 +22,7 @@ class AccommodationController extends Controller
      */
     public function create()
     {
-        //
+        //sdsdsd
     }
 
     /**
@@ -38,7 +38,7 @@ class AccommodationController extends Controller
      */
     public function show(Accommodation $accommodation)
     {
-      return $accommodation;
+        return $accommodation;
     }
 
     /**
@@ -54,8 +54,8 @@ class AccommodationController extends Controller
      */
     public function update(UpdateAccommodationRequest $request, Accommodation $accommodation)
     {
-                  $accommodation->update($request->all());
-                  return $accommodation;
+        $accommodation->update($request->all());
+        return $accommodation;
     }
 
     /**
@@ -63,7 +63,7 @@ class AccommodationController extends Controller
      */
     public function destroy(Accommodation $accommodation)
     {
-          $accommodation->delete();
-          return $accommodation;
+        $accommodation->delete();
+        return $accommodation;
     }
 }
