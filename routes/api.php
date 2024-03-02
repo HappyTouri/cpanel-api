@@ -65,18 +65,25 @@ route::apiResource('cities', CityController::class);
 route::apiResource('transportations', TransportationController::class);
 
 // Transportation Prices
+Route::prefix('transportation_prices')
+    ->controller(TransportationPriceController::class)
+    ->group(function () {
+        Route::get('/{id}', 'index_by_country');
+    });
 route::apiResource('transportation_prices', TransportationPriceController::class);
 
 // Rooms Category
 route::apiResource('room_categories', RoomCategoryController::class);
 
+// Tour Titles
+route::apiResource('tour_titles', TourTitleController::class);
+
+
 
 
 route::apiResource('accommodation_types', AccommodationTypeController::class);
-
 route::apiResource('apartment_details', ApartmentDetailController::class);
 route::apiResource('tour_statuses', TourStatusController::class);
-route::apiResource('tour_titles', TourTitleController::class);
 route::apiResource('rules', RuleController::class);
 route::apiResource('tours', TourController::class);
 route::apiResource('tour_photos', TourPhotoController::class);

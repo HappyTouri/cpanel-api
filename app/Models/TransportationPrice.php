@@ -7,11 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class TransportationPrice extends Model
 {
+
+    protected $fillable = [
+        'price',
+        'country_id',
+        'transportation_id'
+    ];
     use HasFactory;
-    function transportation(){
+    function transportation()
+    {
         return $this->belongsTo(Transportation::class);
     }
-    function country(){
+    function country()
+    {
         return $this->belongsTo(Country::class);
     }
 }

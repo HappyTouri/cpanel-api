@@ -20,7 +20,8 @@ class CityController extends Controller
     public function index_by_country($countryID)
     {
         try {
-            $data = City::where('country_id', $countryID)->get();
+            // $data = City::where('country_id', $countryID)->get();
+            $data = City::with('country')->where('country_id', $countryID)->get();
             return $this->create_response(true, 'ok', $data);
         } catch (\Exception $e) {
             return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);

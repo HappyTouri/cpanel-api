@@ -23,7 +23,7 @@ class UpdateCityRequest extends FormRequest
     {
         return [
             'city' => 'required',
-            'country_id' => 'required',
+            // 'country_id' => 'required',
         ];
     }
 }

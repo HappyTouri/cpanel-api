@@ -13,7 +13,13 @@ class TourTitleController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $data = TourTitle::all();
+            return $this->create_response(true, 'ok', $data);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
+
     }
 
     /**
@@ -29,7 +35,14 @@ class TourTitleController extends Controller
      */
     public function store(StoreTourTitleRequest $request)
     {
-        //
+        try {
+            $input = $request->all();
+            $data = TourTitle::create($input);
+            return $this->create_response(true, 'ok', $data, 201);
+
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
     /**
@@ -53,7 +66,13 @@ class TourTitleController extends Controller
      */
     public function update(UpdateTourTitleRequest $request, TourTitle $tourTitle)
     {
-        //
+        try {
+            $data = $request->validated();
+            $tourTitle->update($data);
+            return $this->create_response(true, 'ok', $data, 201);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
     /**
@@ -61,6 +80,11 @@ class TourTitleController extends Controller
      */
     public function destroy(TourTitle $tourTitle)
     {
-        //
+        try {
+            $data = $tourTitle->delete();
+            return $this->create_response(true, 'ok', $data, 201);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 }
