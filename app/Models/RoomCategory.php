@@ -7,8 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class RoomCategory extends Model
 {
+    protected $fillable = [
+        'room_category',
+    ];
     use HasFactory;
-    function hotel_prices(){
+    function hotel_prices()
+    {
         return $this->hasMany(HotelPrice::class);
     }
 }

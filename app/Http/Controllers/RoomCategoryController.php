@@ -13,7 +13,14 @@ class RoomCategoryController extends Controller
      */
     public function index()
     {
-        //
+        //room_category
+        try {
+            $data = RoomCategory::all();
+            return $this->create_response(true, 'ok', $data);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
+
     }
 
     /**
@@ -29,7 +36,14 @@ class RoomCategoryController extends Controller
      */
     public function store(StoreRoomCategoryRequest $request)
     {
-        //
+        try {
+            $input = $request->all();
+            $data = RoomCategory::create($input);
+            return $this->create_response(true, 'ok', $data, 201);
+
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
     /**
@@ -53,7 +67,13 @@ class RoomCategoryController extends Controller
      */
     public function update(UpdateRoomCategoryRequest $request, RoomCategory $roomCategory)
     {
-        //
+        try {
+            $data = $request->validated();
+            $roomCategory->update($data);
+            return $this->create_response(true, 'ok', $data, 201);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
     /**
@@ -61,6 +81,11 @@ class RoomCategoryController extends Controller
      */
     public function destroy(RoomCategory $roomCategory)
     {
-        //
+        try {
+            $data = $roomCategory->delete();
+            return $this->create_response(true, 'ok', $data, 201);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 }

@@ -7,20 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
+    protected $fillable = [
+        'city',
+        'country_id'
+    ];
     use HasFactory;
-    function tours(){
+    function tours()
+    {
         return $this->hasMany(Tour::class);
     }
-    function drivers(){
+    function drivers()
+    {
         return $this->hasMany(Driver::class);
     }
-    function tourGuides(){
+    function tourGuides()
+    {
         return $this->hasMany(TourGuide::class);
     }
-    function accommodations(){
+    function accommodations()
+    {
         return $this->hasMany(Accommodation::class);
     }
-    function country(){
+    function country()
+    {
         return $this->belongsTo(Country::class);
     }
 }

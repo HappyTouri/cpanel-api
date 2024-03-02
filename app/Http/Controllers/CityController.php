@@ -13,23 +13,33 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+
+    public function index_by_country($countryID)
     {
-        //
+        try {
+            $data = City::where('country_id', $countryID)->get();
+            return $this->create_response(true, 'ok', $data);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreCityRequest $request)
     {
-        //
+        try {
+            $input = $request->all();
+            $data = City::create($input);
+            return $this->create_response(true, 'ok', $data);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
     /**
@@ -45,7 +55,7 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        //
+
     }
 
     /**
@@ -53,7 +63,13 @@ class CityController extends Controller
      */
     public function update(UpdateCityRequest $request, City $city)
     {
-        //
+        try {
+            $input = $request->all();
+            $data = $city->update($input);
+            return $this->create_response(true, 'ok', $data);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
     /**
@@ -61,6 +77,11 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-        //
+        try {
+            $data = $city->delete();
+            return $this->create_response(true, 'ok', $data, 201);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 }

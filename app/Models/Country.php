@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
 {
+    protected $fillable = [
+        'country',
+        'country_icon'
+    ];
     use HasFactory;
     function cites()
     {
@@ -16,7 +20,8 @@ class Country extends Model
     {
         return $this->hasMany(TransportationPrice::class);
     }
-    function drivers(){
+    function drivers()
+    {
         return $this->hasMany(Driver::class);
     }
 }

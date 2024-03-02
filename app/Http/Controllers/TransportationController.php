@@ -13,7 +13,12 @@ class TransportationController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $data = transportation::get();
+            return $this->create_response(true, 'ok', $data);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
     /**
@@ -29,7 +34,14 @@ class TransportationController extends Controller
      */
     public function store(StoreTransportationRequest $request)
     {
-        //
+        try {
+            $input = $request->all();
+            $data = transportation::create($input);
+            return $this->create_response(true, 'ok', $data);
+
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
     /**
@@ -53,7 +65,13 @@ class TransportationController extends Controller
      */
     public function update(UpdateTransportationRequest $request, Transportation $transportation)
     {
-        //
+        try {
+            $data = $request->validated();
+            $transportation->update($data);
+            return $this->create_response(true, 'ok', $data, 201);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
     /**
@@ -61,6 +79,11 @@ class TransportationController extends Controller
      */
     public function destroy(Transportation $transportation)
     {
-        //
+        try {
+            $data = $transportation->delete();
+            return $this->create_response(true, 'ok', $data, 201);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 }
