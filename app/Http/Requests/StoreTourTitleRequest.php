@@ -11,7 +11,7 @@ class StoreTourTitleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StoreTourTitleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title_EN' => 'required',
+            'title_AR' => 'required',
+            'title_RU' => 'required'
+
         ];
     }
 }

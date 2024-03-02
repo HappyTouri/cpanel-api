@@ -11,7 +11,7 @@ class StoreTransportationPriceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreTransportationPriceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'country_id'=>'required|exists:countries,id',
+        'transportation_id'=>'required|exists:transportations,id',
+        'price'=>'required|integer'
         ];
     }
 }

@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class City extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'city',
+         'country_id'
+        ];
     function tours(){
         return $this->hasMany(Tour::class);
     }
@@ -21,6 +26,6 @@ class City extends Model
         return $this->hasMany(Accommodation::class);
     }
     function country(){
-        return $this->belongsTo(Country::class);
+        return $this->belongsTo(Country::class,'country_id');
     }
 }

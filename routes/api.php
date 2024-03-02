@@ -57,6 +57,11 @@ route::apiResource('apartment_details',ApartmentDetailController::class);
 route::apiResource('tour_statuses',TourStatusController::class);
 route::apiResource('tour_titles',TourTitleController::class);
 route::apiResource('rules',RuleController::class);
+
+
+route::prefix('cities')->controller(CityController::class)->group(function(){
+    route::get('/{country}','cityByCountry');
+});
 route::apiResource('cities',CityController::class);
 route::apiResource('tours',TourController::class);
 route::apiResource('tour_photos',TourPhotoController::class);
@@ -77,6 +82,11 @@ route::apiResource('tour_details',TourDetailController::class);
 route::apiResource('confirmation_photos',ConfirmationPhotoController::class);
 route::apiResource('payment_photos',PaymentPhotoController::class);
 route::apiResource('hotel_reservations',HotelReservationController::class);
+
+
+route::prefix('transportation_prices')->controller(TransportationPriceController::class)->group(function(){
+    route::get('/{country}','transportatinPriceByCountry');
+});
 route::apiResource('transportation_prices',TransportationPriceController::class);
 route::apiResource('users',UserController::class);
 route::apiResource('r_room_categories',RRoomCategoryController::class);

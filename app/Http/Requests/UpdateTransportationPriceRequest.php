@@ -11,7 +11,7 @@ class UpdateTransportationPriceRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateTransportationPriceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'country_id'=>'exists:countries,id',
+            'transportation_id'=>'exists:transportations,id',
+            'price'=>'integer'
         ];
     }
 }

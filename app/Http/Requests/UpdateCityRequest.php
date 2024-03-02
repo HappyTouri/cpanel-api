@@ -11,7 +11,7 @@ class UpdateCityRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateCityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'city'=> 'string',
+            'country_id'=> 'exists:countries,id',
         ];
     }
 }

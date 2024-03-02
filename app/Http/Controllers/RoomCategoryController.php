@@ -13,23 +13,27 @@ class RoomCategoryController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $data =RoomCategory::get();
+    
+            return $this->create_response(true, 'ok', $data);
+    
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+  
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreRoomCategoryRequest $request)
     {
-        //
+        $data= $request->validated();
+        $added= RoomCategory::create($data);
+      
+        return $this->create_response(true, 'ok', $added, 201);
     }
 
     /**
@@ -37,23 +41,26 @@ class RoomCategoryController extends Controller
      */
     public function show(RoomCategory $roomCategory)
     {
-        //
+        try {
+            $data =  $roomCategory;
+    
+            return $this->create_response(true, 'ok', $data);
+    
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(RoomCategory $roomCategory)
-    {
-        //
-    }
+  
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateRoomCategoryRequest $request, RoomCategory $roomCategory)
     {
-        //
+        $data= $request->validated();
+       $updated= $roomCategory->update($data);
+        return $this->create_response(true, 'ok', $updated, 201);
     }
 
     /**
@@ -61,6 +68,8 @@ class RoomCategoryController extends Controller
      */
     public function destroy(RoomCategory $roomCategory)
     {
-        //
+        
+        $deleted= $roomCategory->delete();
+        return $this->create_response(true, 'ok', $deleted, 200);
     }
 }
