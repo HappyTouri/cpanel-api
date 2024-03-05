@@ -14,16 +14,16 @@ class Country extends Model
         'country',
         'country_icon'];
 
-    function cites()
+    function cities()
     {
-        return $this->hasMany(City::class, 'country_id');
+        return $this->hasMany(City::class, );
     }
     function transportation_prices()
     {
         return $this->hasMany(TransportationPrice::class);
     }
-    function drivers(){
-        return $this->hasMany(Driver::class);
+    function offers(){
+        return $this->hasMany(Offer::class);
     }
 }
 

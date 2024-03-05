@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('air_ticket_photos', function (Blueprint $table) {
             $table->id();
             $table->string('air_ticket_Photo');
-            $table->foreignIdFor(Reservation::class)->constrained();
+            $table->foreignIdFor(Reservation::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

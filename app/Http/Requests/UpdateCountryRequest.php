@@ -24,7 +24,7 @@ class UpdateCountryRequest extends FormRequest
         return [
             'country' => ['required','string','max:255'],
         
-            // 'country_icon' => ['required']
+            'country_icon' => ''
         ];
     }
 }

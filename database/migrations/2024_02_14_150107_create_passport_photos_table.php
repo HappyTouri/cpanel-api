@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('passport_photos', function (Blueprint $table) {
             $table->id();
             $table->string('passport_Photo');
-            $table->foreignIdFor(Reservation::class)->constrained();
+            $table->foreignIdFor(Reservation::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

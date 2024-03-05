@@ -23,7 +23,7 @@ class UpdateCityRequest extends FormRequest
     {
         return [
             'city'=> 'string',
-            'country_id'=> 'exists:countries,id',
+            
         ];
     }
 }

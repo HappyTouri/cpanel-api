@@ -22,9 +22,9 @@ class UpdateTourTitleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title_EN' ,
-            'title_AR' ,
-            'title_RU' 
+            'title_EN'=>'string', ,
+            'title_AR'=>'string', ,
+            'title_RU'=>'string', 
         ];
     }
 }

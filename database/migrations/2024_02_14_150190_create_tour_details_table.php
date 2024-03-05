@@ -18,14 +18,14 @@ return new class extends Migration
     {
         Schema::create('tour_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Offer::class)->constrained();
+            $table->foreignIdFor(Offer::class)->constrained()->cascadeOnDelete();
             $table->date('date');
             $table->integer('number_of_room');
             $table->integer('extra_bed');
-            $table->foreignIdFor(TourTitle::class)->constrained();
-            $table->foreignIdFor(Tour::class)->constrained();
-            $table->foreignIdFor(Accommodation::class)->constrained();
-            $table->foreignIdFor(TourGuide::class)->constrained()->nullable();
+            $table->foreignIdFor(TourTitle::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Tour::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Accommodation::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(TourGuide::class)->constrained()->cascadeOnDelete()->nullable();
             $table->timestamps();
         });
     }

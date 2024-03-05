@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\HotelReservation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,6 +19,7 @@ class PaymentPhotoFactory extends Factory
     {
         return [
             'photo' =>fake()->imageUrl(),
+            'hotel_reservation_id' => HotelReservation::all()->random()->id,
         ];
     }
 }

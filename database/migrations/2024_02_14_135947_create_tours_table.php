@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('tour_description_RU');
             $table->string('tour_description_local');
             $table->string('video_link');
-            $table->foreignIdFor(City::class)->constrained();
+            $table->foreignIdFor(City::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

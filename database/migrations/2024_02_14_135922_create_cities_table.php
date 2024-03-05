@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('cities', function (Blueprint $table) {
             $table->id();
             $table->string('city');
-            $table->foreignIdFor(Country::class)->constrained();
+            $table->foreignIdFor(Country::class)->constrained()->cascadeOnDelete(); //
             $table->timestamps();
         });
     }

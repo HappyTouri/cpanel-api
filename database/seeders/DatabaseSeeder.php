@@ -109,12 +109,14 @@ class DatabaseSeeder extends Seeder
         Offer::factory(20)->create();
         Reservation::factory(20)->create();
         PassportPhoto::factory(10)->create();
+        TourDetail::factory(10)->create();
+        HotelReservation::factory(10)->create();
         InvoicePhoto::factory(10)->create();
         AirTicketPhoto::factory(10)->create();
-        TourDetail::factory(10)->create();
+        
         ConfirmationPhoto::factory(10)->create();
         PaymentPhoto::factory(10)->create();
-        HotelReservation::factory(10)->create();
+        
         TransportationPrice::factory(10)->create();
        
         RRoomCategory::factory(10)->create();

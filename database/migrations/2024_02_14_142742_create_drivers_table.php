@@ -23,8 +23,8 @@ return new class extends Migration
             $table->integer('driver_rate');
             $table->integer('driver_price');
             $table->string('note')->nullable();
-            $table->foreignIdFor(City::class)->constrained();
-            $table->foreignIdFor(Transportation::class)->constrained();
+            $table->foreignIdFor(City::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Transportation::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

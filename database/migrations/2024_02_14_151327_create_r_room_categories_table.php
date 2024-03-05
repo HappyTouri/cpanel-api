@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('r_room_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(RoomCategory::class)->constrained();
-            $table->foreignIdFor(TourDetail::class)->constrained();
+            $table->foreignIdFor(RoomCategory::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(TourDetail::class)->constrained()->cascadeOnDelete();
             $table->integer('extra_bed');
             $table->timestamps();
         });
