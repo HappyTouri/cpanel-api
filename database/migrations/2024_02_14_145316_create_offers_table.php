@@ -17,15 +17,15 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->constrained();
-            $table->foreignIdFor(Country::class)->constrained();
-            $table->foreignIdFor(TourStatus::class)->constrained();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Country::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(TourStatus::class)->constrained()->cascadeOnDelete();
             $table->string('tour_title');
             $table->string('tour_name');
             $table->integer('number_of_days');
             $table->date('from');
             $table->date('till');
-            $table->foreignIdFor(Transportation::class)->constrained();
+            $table->foreignIdFor(Transportation::class)->constrained()->cascadeOnDelete();
             $table->integer('number_of_people');
             $table->integer('transportation_price');
             $table->integer('tour_guide_price');

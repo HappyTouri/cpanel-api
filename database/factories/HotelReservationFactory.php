@@ -28,9 +28,8 @@ class HotelReservationFactory extends Factory
             'confirmed' => fake()->numberBetween(0, 10),
             'paid' => fake()->numberBetween(0, 10),
             'email_canceled' => fake()->numberBetween(0, 10),
-            'confirmation_photo_id' =>ConfirmationPhoto::all()->random()->id, 
-            'invoice_photo_id' =>InvoicePhoto::all()->random()->id,
-            'payment_photo_id' =>PaymentPhoto::all()->random()->id, 
+            
+           
             'tour_detail_id' => TourDetail::all()->random()->id,
         ];
     }

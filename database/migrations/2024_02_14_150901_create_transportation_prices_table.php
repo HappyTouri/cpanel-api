@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('transportation_prices', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Country::class)->constrained();
-            $table->foreignIdFor(Transportation::class)->constrained();
+            $table->foreignIdFor(Country::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Transportation::class)->constrained()->cascadeOnDelete();
             $table->integer('price');
             $table->timestamps();
         });

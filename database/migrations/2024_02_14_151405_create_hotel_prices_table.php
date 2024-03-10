@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('hotel_prices', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(RoomCategory::class)->constrained();
-            $table->foreignIdFor(HotelSeason::class)->constrained();
+            $table->foreignIdFor(RoomCategory::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(HotelSeason::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

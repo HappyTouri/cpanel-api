@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('price_per_day');
             $table->date('date_of_birth');
             $table->string('note')->nullable();
-            $table->foreignIdFor(City::class)->constrained();
+            $table->foreignIdFor(City::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

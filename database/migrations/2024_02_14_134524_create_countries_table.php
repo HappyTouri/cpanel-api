@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('country_icon');
             $table->timestamps();
+           
         });
     }
 

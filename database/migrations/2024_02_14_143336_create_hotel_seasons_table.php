@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('from');
             $table->date('till');
             $table->integer('extrabed_price');
-            $table->foreignIdFor(Accommodation::class)->constrained();
+            $table->foreignIdFor(Accommodation::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

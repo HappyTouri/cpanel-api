@@ -12,8 +12,17 @@ class City extends Model
         'country_id'
     ];
     use HasFactory;
+<<<<<<< HEAD
     function tours()
     {
+=======
+
+    protected $fillable = [
+        'city',
+         'country_id'
+        ];
+    function tours(){
+>>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
         return $this->hasMany(Tour::class);
     }
     function drivers()
@@ -28,8 +37,13 @@ class City extends Model
     {
         return $this->hasMany(Accommodation::class);
     }
+<<<<<<< HEAD
     function country()
     {
         return $this->belongsTo(Country::class);
+=======
+    function country(){
+        return $this->belongsTo(Country::class,'country_id');
+>>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
     }
 }

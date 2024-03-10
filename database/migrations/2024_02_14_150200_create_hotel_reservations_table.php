@@ -24,10 +24,10 @@ return new class extends Migration
             $table->integer('confirmed');
             $table->integer('paid');
             $table->integer('email_canceled');
-            $table->foreignIdFor(ConfirmationPhoto::class)->constrained();
-            $table->foreignIdFor(InvoicePhoto::class)->constrained();
-            $table->foreignIdFor(PaymentPhoto::class)->constrained();
-            $table->foreignIdFor(TourDetail::class)->constrained();
+           
+            
+            
+            $table->foreignIdFor(TourDetail::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

@@ -22,8 +22,16 @@ class StoreCountryRequest extends FormRequest
     public function rules(): array
     {
         return [
+<<<<<<< HEAD
             'country' => 'required',
             'country_icon' => 'required',
+=======
+            'country' => ['required','string','max:255'],
+        
+            'country_icon' => ['required']
+            
+
+>>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
         ];
     }
 }

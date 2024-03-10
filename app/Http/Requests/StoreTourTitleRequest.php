@@ -24,7 +24,12 @@ class StoreTourTitleRequest extends FormRequest
         return [
             'title_EN' => 'required',
             'title_AR' => 'required',
+<<<<<<< HEAD
             'title_RU' => 'required',
+=======
+            'title_RU' => 'required'
+
+>>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
         ];
     }
 }

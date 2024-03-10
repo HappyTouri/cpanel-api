@@ -11,8 +11,15 @@ class Transportation extends Model
         'type',
     ];
     use HasFactory;
+<<<<<<< HEAD
     function transportation_prices()
     {
+=======
+    protected $fillable=[
+        'type'
+    ];
+    function transportation_prices(){
+>>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
         return $this->hasMany(TransportationPrice::class);
     }
     function drivers()

@@ -17,8 +17,8 @@ return new class extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
             $table->string('note')->nullable();
-            $table->foreignIdFor(Driver::class)->constrained();
-            $table->foreignIdFor(TourGuide::class)->constrained();
+            $table->foreignIdFor(Driver::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(TourGuide::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->nullable();
             $table->timestamp('admin_seen_at')->nullable();
             $table->timestamp('operator_seen_at')->nullable();

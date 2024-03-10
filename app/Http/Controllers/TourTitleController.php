@@ -14,27 +14,32 @@ class TourTitleController extends Controller
     public function index()
     {
         try {
+<<<<<<< HEAD
             $data = TourTitle::all();
             return $this->create_response(true, 'ok', $data);
         } catch (\Exception $e) {
             return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
         }
 
+=======
+            $data = TourTitle::get();
+    
+            return $this->create_response(true, 'ok', $data);
+    
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
+>>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+ 
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(StoreTourTitleRequest $request)
     {
+<<<<<<< HEAD
         try {
             $input = $request->all();
             $data = TourTitle::create($input);
@@ -43,6 +48,12 @@ class TourTitleController extends Controller
         } catch (\Exception $e) {
             return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
         }
+=======
+        $data= $request->validated();
+        $added= TourTitle::create($data);
+      
+        return $this->create_response(true, 'ok', $added, 201);
+>>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
     }
 
     /**
@@ -50,22 +61,24 @@ class TourTitleController extends Controller
      */
     public function show(TourTitle $tourTitle)
     {
-        //
+        try {
+            $data =  $tourTitle;
+    
+            return $this->create_response(true, 'ok', $data);
+    
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }  
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(TourTitle $tourTitle)
-    {
-        //
-    }
+   
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateTourTitleRequest $request, TourTitle $tourTitle)
     {
+<<<<<<< HEAD
         try {
             $data = $request->validated();
             $tourTitle->update($data);
@@ -73,6 +86,11 @@ class TourTitleController extends Controller
         } catch (\Exception $e) {
             return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
         }
+=======
+        $data= $request->validated();
+       $updated= $tourTitle->update($data);
+        return $this->create_response(true, 'ok', $updated, 201);
+>>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
     }
 
     /**
@@ -80,6 +98,7 @@ class TourTitleController extends Controller
      */
     public function destroy(TourTitle $tourTitle)
     {
+<<<<<<< HEAD
         try {
             $data = $tourTitle->delete();
             return $this->create_response(true, 'ok', $data, 201);
@@ -87,4 +106,9 @@ class TourTitleController extends Controller
             return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
         }
     }
+=======
+        $deleted= $tourTitle->delete();
+        return $this->create_response(true, 'ok', $deleted, 200);
+   }
+>>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
 }
