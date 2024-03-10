@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTransportationPriceRequest extends FormRequest
+class UpdateDriverPhotoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,9 +22,7 @@ class StoreTransportationPriceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'price' => 'required',
-            'country_id' => 'required',
-            'transportation_id' => 'required',
+            //
         ];
     }
 }

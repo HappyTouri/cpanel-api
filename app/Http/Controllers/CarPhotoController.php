@@ -5,62 +5,53 @@ namespace App\Http\Controllers;
 use App\Models\CarPhoto;
 use App\Http\Requests\StoreCarPhotoRequest;
 use App\Http\Requests\UpdateCarPhotoRequest;
+use Illuminate\Support\Facades\File;
 
 class CarPhotoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(StoreCarPhotoRequest $request)
     {
-        //
+        try {
+            if ($request->hasFile("CarPhoto")) {
+                $files = $request->file("CarPhoto");
+                foreach ($files as $file) {
+                    $imageName = time() . '_' . $file->getClientOriginalName();
+                    $request['driver_id'] = $request->driver_id;
+                    $request['photo'] = $imageName;
+                    $file->move(\public_path("/CarImages"), $imageName);
+                    CarPhoto::create($request->all());
+                }
+            }
+            $data = CarPhoto::all()->where("driver_id", $request->driver_id);
+
+            return $this->create_response(true, 'ok', $data);
+
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(CarPhoto $carPhoto)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(CarPhoto $carPhoto)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateCarPhotoRequest $request, CarPhoto $carPhoto)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(CarPhoto $carPhoto)
     {
-        //
+        try {
+            $image = CarPhoto::findOrFail($carPhoto->id);
+            if (File::exists("CarImages/" . $image->photo)) {
+                File::delete("CarImages/" . $image->photo);
+            }
+
+            $carPhoto->delete();
+
+
+            return $this->create_response(true, 'ok', $image);
+
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 }

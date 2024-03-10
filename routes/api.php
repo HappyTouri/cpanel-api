@@ -31,6 +31,7 @@ use App\Http\Controllers\TourStatusController;
 use App\Http\Controllers\TourTitleController;
 use App\Http\Controllers\TransportationController;
 use App\Http\Controllers\TransportationPriceController;
+use App\Http\Controllers\DriverPhotoController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -78,6 +79,29 @@ route::apiResource('room_categories', RoomCategoryController::class);
 // Tour Titles
 route::apiResource('tour_titles', TourTitleController::class);
 
+//Tours
+Route::prefix('tours-by-country')
+    ->controller(TourController::class)
+    ->group(function () {
+        Route::get('/{id}', 'index_by_country');
+    });
+route::apiResource('tours', TourController::class);
+// Tours Photos
+route::apiResource('tour_photos', TourPhotoController::class);
+
+
+// Drivers
+
+route::apiResource('drivers', DriverController::class)->except('index');
+Route::prefix('drivers-by-country')
+    ->controller(DriverController::class)
+    ->group(function () {
+        Route::get('/{countryID}', 'index_by_country');
+    });
+// Car photos
+route::apiResource('car_photos', CarPhotoController::class);
+// Driver photos
+route::apiResource('driver_photo', DriverPhotoController::class);
 
 
 
@@ -85,10 +109,6 @@ route::apiResource('accommodation_types', AccommodationTypeController::class);
 route::apiResource('apartment_details', ApartmentDetailController::class);
 route::apiResource('tour_statuses', TourStatusController::class);
 route::apiResource('rules', RuleController::class);
-route::apiResource('tours', TourController::class);
-route::apiResource('tour_photos', TourPhotoController::class);
-route::apiResource('drivers', DriverController::class);
-route::apiResource('car_photos', CarPhotoController::class);
 route::apiResource('tour_guides', TourGuideController::class);
 route::apiResource('accommodations', AccommodationController::class);
 route::apiResource('hotel_seasons', HotelSeasonController::class);
@@ -104,7 +124,6 @@ route::apiResource('tour_details', TourDetailController::class);
 route::apiResource('confirmation_photos', ConfirmationPhotoController::class);
 route::apiResource('payment_photos', PaymentPhotoController::class);
 route::apiResource('hotel_reservations', HotelReservationController::class);
-
 route::apiResource('users', UserController::class);
 route::apiResource('r_room_categories', RRoomCategoryController::class);
 route::apiResource('hotel_prices', HotelPriceController::class);

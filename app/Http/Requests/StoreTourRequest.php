@@ -11,7 +11,7 @@ class StoreTourRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,17 @@ class StoreTourRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            // 'tour_title_EN' => 'required',
+            // 'tour_title_AR' => 'required',
+            // 'tour_title_RU' => 'required',
+            // 'tour_title_local' => 'required',
+            // 'tour_description_EN' => 'required',
+            // 'tour_description_AR' => 'required',
+            // 'tour_description_RU' => 'required',
+            // 'tour_description_local' => 'required',
+            // 'video_link' => 'required',
+            // 'city_id' => 'required',
+
         ];
     }
 }

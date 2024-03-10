@@ -11,7 +11,7 @@ class StoreCarPhotoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StoreCarPhotoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'driver_id' => 'required|exists:drivers,id',
+            'CarPhoto.*' => 'image|max:2048'
         ];
     }
 }

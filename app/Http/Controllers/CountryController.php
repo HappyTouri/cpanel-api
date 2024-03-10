@@ -11,7 +11,8 @@ class CountryController extends Controller
     public function index()
     {
         try {
-            $data = Country::all();
+            // $data = Country::all();
+            $data = Country::with('cites')->get();
             return $this->create_response(true, 'ok', $data);
         } catch (\Exception $e) {
             return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);

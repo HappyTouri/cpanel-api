@@ -7,8 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class TourPhoto extends Model
 {
+    protected $fillable = [
+        'photo',
+        'tour_id',
+
+    ];
     use HasFactory;
-    function tour(){
+    function tour()
+    {
         return $this->belongsTo(Tour::class);
     }
 }

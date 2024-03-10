@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateDriverRequest extends FormRequest
+class StoreDriverPhotoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,15 +22,8 @@ class UpdateDriverRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => "required",
-            "mobile" => "required",
-            "car_model" => "required",
-            "number_of_seats" => "required|integer",
-            "driver_rate" => "required",
-            "driver_price" => "required",
-            "note" => "sometimes",
-            "city_id" => "required|exists:cities,id",
-            "transportation_id" => "required|exists:transportations,id",
+            'driver_id' => 'required|exists:drivers,id',
+            'DriverPhoto.*' => 'image|max:2048'
         ];
     }
 }
