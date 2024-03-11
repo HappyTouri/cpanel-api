@@ -18,7 +18,6 @@ class CityController extends Controller
 
     }
 
-<<<<<<< HEAD
 
     public function index_by_country($countryID)
     {
@@ -30,9 +29,6 @@ class CityController extends Controller
             return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
         }
     }
-=======
-  
->>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
 
 
     /**
@@ -40,7 +36,6 @@ class CityController extends Controller
      */
     public function store(StoreCityRequest $request)
     {
-<<<<<<< HEAD
         try {
             $input = $request->all();
             $data = City::create($input);
@@ -48,12 +43,6 @@ class CityController extends Controller
         } catch (\Exception $e) {
             return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
         }
-=======
-        $data= $request->validated();
-        $added= City::create($data);
-      
-        return $this->create_response(true, 'ok', $added, 201);
->>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
     }
 
     /**
