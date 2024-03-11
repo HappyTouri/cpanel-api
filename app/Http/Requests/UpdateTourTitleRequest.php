@@ -22,15 +22,9 @@ class UpdateTourTitleRequest extends FormRequest
     public function rules(): array
     {
         return [
-<<<<<<< HEAD
             'title_EN' => 'required',
             'title_AR' => 'required',
             'title_RU' => 'required',
-=======
-            'title_EN'=>'string', ,
-            'title_AR'=>'string', ,
-            'title_RU'=>'string', 
->>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
         ];
     }
 }

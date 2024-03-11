@@ -14,14 +14,6 @@ class TransportationPrice extends Model
         'transportation_id'
     ];
     use HasFactory;
-<<<<<<< HEAD
-=======
-    protected $fillable  = [
-        'country_id',
-        'transportation_id',
-        'price'
-    ];
->>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
     function transportation()
     {
         return $this->belongsTo(Transportation::class);

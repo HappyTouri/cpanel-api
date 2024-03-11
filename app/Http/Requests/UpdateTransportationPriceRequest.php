@@ -22,13 +22,7 @@ class UpdateTransportationPriceRequest extends FormRequest
     public function rules(): array
     {
         return [
-<<<<<<< HEAD
             'price' => 'required',
-=======
-            'country_id'=>'exists:countries,id',
-            'transportation_id'=>'exists:transportations,id',
-            'price'=>'integer'
->>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
         ];
     }
 }

@@ -14,9 +14,7 @@ class Country extends Model
     ];
     use HasFactory;
 
-    protected $fillable = [
-        'country',
-        'country_icon'];
+
 
     function cities()
     {
@@ -26,14 +24,9 @@ class Country extends Model
     {
         return $this->hasMany(TransportationPrice::class);
     }
-<<<<<<< HEAD
     function drivers()
     {
         return $this->hasMany(Driver::class);
-=======
-    function offers(){
-        return $this->hasMany(Offer::class);
->>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
     }
 }
 

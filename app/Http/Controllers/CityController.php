@@ -52,32 +52,17 @@ class CityController extends Controller
     {
         //
     }
-    public function cityByCountry( $country)
+    public function cityByCountry($country)
     {
-<<<<<<< HEAD
-
-=======
-        
-        $country= Country::where('country',$country)->first();
-      
-       
-        $city = City::with('country')->where('country_id', '=', $country->id)
-        ->get();
-       
-            
-        return $this->create_response(true, 'ok', $city, 200);
-        
->>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
     }
 
- 
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateCityRequest $request, City $city)
     {
-<<<<<<< HEAD
         try {
             $input = $request->all();
             $data = $city->update($input);
@@ -85,12 +70,6 @@ class CityController extends Controller
         } catch (\Exception $e) {
             return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
         }
-=======
-        
-        $data= $request->validated();
-       $updated= $city->update($data);
-        return $this->create_response(true, 'ok', $updated, 201);
->>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
     }
 
     /**
@@ -98,16 +77,11 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-<<<<<<< HEAD
         try {
             $data = $city->delete();
             return $this->create_response(true, 'ok', $data, 201);
         } catch (\Exception $e) {
             return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
         }
-=======
-        $deleted= $city->delete();
-        return $this->create_response(true, 'ok', $deleted, 200);
->>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
     }
 }

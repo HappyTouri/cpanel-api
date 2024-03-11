@@ -13,10 +13,6 @@ class City extends Model
     ];
     use HasFactory;
 
-    protected $fillable = [
-        'city',
-        'country_id'
-    ];
     function tours()
     {
         return $this->hasMany(Tour::class);

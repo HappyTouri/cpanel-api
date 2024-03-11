@@ -50,7 +50,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-<<<<<<< HEAD
 
 // Countries
 route::apiResource('countries', CountryController::class);
@@ -128,47 +127,3 @@ route::apiResource('hotel_reservations', HotelReservationController::class);
 route::apiResource('users', UserController::class);
 route::apiResource('r_room_categories', RRoomCategoryController::class);
 route::apiResource('hotel_prices', HotelPriceController::class);
-=======
-route::apiResource('countries',CountryController::class);
-route::apiResource('transportations',TransportationController::class);
-route::apiResource('accommodation_types',AccommodationTypeController::class);
-route::apiResource('room_categories',RoomCategoryController::class);
-route::apiResource('apartment_details',ApartmentDetailController::class);
-route::apiResource('tour_statuses',TourStatusController::class);
-route::apiResource('tour_titles',TourTitleController::class);
-route::apiResource('rules',RuleController::class);
-
-
-route::prefix('cities')->controller(CityController::class)->group(function(){
-    route::get('/{country}','cityByCountry');
-});
-route::apiResource('cities',CityController::class);
-route::apiResource('tours',TourController::class);
-route::apiResource('tour_photos',TourPhotoController::class);
-route::apiResource('drivers',DriverController::class);
-route::apiResource('car_photos',CarPhotoController::class);
-route::apiResource('tour_guides',TourGuideController::class);
-route::apiResource('accommodations',AccommodationController::class);
-route::apiResource('hotel_seasons',HotelSeasonController::class);
-route::apiResource('accommodation_photos',AccommodationPhotoController::class);
-route::apiResource('apartment_season_prices',ApartmentSeasonPriceController::class);
-route::apiResource('offers',OfferController::class);
-route::apiResource('offer_seens',OfferSeenController::class);
-route::apiResource('reservations',ReservationController::class);
-route::apiResource('passport_photos',PassportPhotoController::class);
-route::apiResource('invoice_photos',InvoicePhotoController::class);
-route::apiResource('air_ticket_photos',AirTicketPhotoController::class);
-route::apiResource('tour_details',TourDetailController::class);
-route::apiResource('confirmation_photos',ConfirmationPhotoController::class);
-route::apiResource('payment_photos',PaymentPhotoController::class);
-route::apiResource('hotel_reservations',HotelReservationController::class);
-
-
-route::prefix('transportation_prices')->controller(TransportationPriceController::class)->group(function(){
-    route::get('/{country}','transportatinPriceByCountry');
-});
-route::apiResource('transportation_prices',TransportationPriceController::class);
-route::apiResource('users',UserController::class);
-route::apiResource('r_room_categories',RRoomCategoryController::class);
-route::apiResource('hotel_prices',HotelPriceController::class);
->>>>>>> 8f1d9834a604e4b0efa5f6d07865ab52551bee66
