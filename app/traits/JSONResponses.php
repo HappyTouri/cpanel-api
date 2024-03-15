@@ -8,9 +8,10 @@ trait JSONResponses
     protected $jsonResponses = [
         100 => "Continue",
         200 => "Success",
+        201 => "the request was successfully fulfilled",
         403 => "Authorizatoin faild",
         404 => "Not Found",
-        201 => "added new record or updated record"
+
     ];
 
     function create_response(bool $success, string $message = '', $data = "", $status = 200)
