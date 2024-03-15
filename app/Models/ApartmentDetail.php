@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class ApartmentDetail extends Model
 {
     use HasFactory;
-    function accommodation(){
-        return $this->hasOne(Accommodation::class);
+    protected $fillable = [
+        'accommodation_id',
+        'number_of_rooms',
+        'number_of_peoples',
+    ];
+
+    public function accommodation()
+    {
+        return $this->belongsTo(Accommodation::class);
     }
 }

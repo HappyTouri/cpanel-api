@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCountryRequest extends FormRequest
+class UpdateHotelRoomCategoriesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return false;
     }
 
     /**
@@ -22,8 +22,7 @@ class StoreCountryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'country' => ['required', 'string', 'max:255'],
-            'country_icon' => ['required']
+            //
         ];
     }
 }

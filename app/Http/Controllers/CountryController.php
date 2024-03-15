@@ -10,47 +10,41 @@ class CountryController extends Controller
 {
     public function index()
     {
-        return Country::all();
+        try {
+            $data = Country::with('cities')->get();
+            return $this->create_response(true, 'ok', $data);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(StoreCountryRequest $request)
     {
-        //
+        try {
+            $input = $request->all();
+            $data = Country::create($input);
+            return $this->create_response(true, 'ok', $data);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Country $country)
-    {
-        return $country;
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Country $country)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(UpdateCountryRequest $request, Country $country)
     {
-        //
+        try {
+            $input = $request->all();
+            $data = $country->update($input);
+            return $this->create_response(true, 'ok', $data);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
     /**
@@ -58,6 +52,11 @@ class CountryController extends Controller
      */
     public function destroy(Country $country)
     {
-        //
+        try {
+            $data = $country->delete();
+            return $this->create_response(true, 'ok', $data, 201);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 }

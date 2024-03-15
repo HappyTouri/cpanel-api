@@ -15,4 +15,10 @@ class RoomCategory extends Model
     {
         return $this->hasMany(HotelPrice::class);
     }
+
+
+    function hotel_room_categories()
+    {
+        return $this->hasMany(HotelRoomCategories::class);
+    }
 }

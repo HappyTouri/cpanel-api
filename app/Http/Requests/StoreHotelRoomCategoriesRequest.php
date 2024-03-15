@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCountryRequest extends FormRequest
+class StoreHotelRoomCategoriesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,8 +22,7 @@ class StoreCountryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'country' => ['required', 'string', 'max:255'],
-            'country_icon' => ['required']
+
         ];
     }
 }

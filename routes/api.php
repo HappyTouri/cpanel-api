@@ -13,6 +13,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\HotelPriceController;
 use App\Http\Controllers\HotelReservationController;
+use App\Http\Controllers\HotelRoomCategoriesController;
 use App\Http\Controllers\HotelSeasonController;
 use App\Http\Controllers\InvoicePhotoController;
 use App\Http\Controllers\OfferController;
@@ -65,6 +66,9 @@ route::apiResource('cities', CityController::class);
 // Transportation Types
 route::apiResource('transportations', TransportationController::class);
 
+// Accommodation Types
+route::apiResource('accommodation_types', AccommodationTypeController::class);
+
 // Transportation Prices
 Route::prefix('transportation_prices')
     ->controller(TransportationPriceController::class)
@@ -91,7 +95,6 @@ route::apiResource('tour_photos', TourPhotoController::class);
 
 
 // Drivers
-
 route::apiResource('drivers', DriverController::class)->except('index');
 Route::prefix('drivers-by-country')
     ->controller(DriverController::class)
@@ -103,14 +106,23 @@ route::apiResource('car_photos', CarPhotoController::class);
 // Driver photos
 route::apiResource('driver_photo', DriverPhotoController::class);
 
+// Accommodation 
+Route::prefix('accommodation-by-country')
+    ->controller(AccommodationController::class)
+    ->group(function () {
+        Route::get('/{id}', 'index_by_country');
+    });
+route::apiResource('accommodations', AccommodationController::class);
+
+// hotel room Categories
+route::apiResource('hotel_room_categories', HotelRoomCategoriesController::class);
 
 
-route::apiResource('accommodation_types', AccommodationTypeController::class);
+
 route::apiResource('apartment_details', ApartmentDetailController::class);
 route::apiResource('tour_statuses', TourStatusController::class);
 route::apiResource('rules', RuleController::class);
 route::apiResource('tour_guides', TourGuideController::class);
-route::apiResource('accommodations', AccommodationController::class);
 route::apiResource('hotel_seasons', HotelSeasonController::class);
 route::apiResource('accommodation_photos', AccommodationPhotoController::class);
 route::apiResource('apartment_season_prices', ApartmentSeasonPriceController::class);

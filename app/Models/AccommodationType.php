@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class AccommodationType extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'accommodation_type',
+    ];
 
-    function accommodations(){
+    function accommodations()
+    {
         return $this->hasMany(Accommodation::class);
     }
-    
+
 
 }

@@ -6,8 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -25,8 +24,8 @@ return new class extends Migration
             $table->string('note')->nullable();
             $table->string('cover_photo');
             $table->string('video_link');
-            $table->foreignIdFor(City::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(AccommodationType::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(City::class)->constrained();
+            $table->foreignIdFor(AccommodationType::class)->constrained();
             $table->timestamps();
         });
     }

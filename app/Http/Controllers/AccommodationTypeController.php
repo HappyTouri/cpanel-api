@@ -13,7 +13,12 @@ class AccommodationTypeController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $data = AccommodationType::get();
+            return $this->create_response(true, 'ok', $data);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
     /**
@@ -29,7 +34,15 @@ class AccommodationTypeController extends Controller
      */
     public function store(StoreAccommodationTypeRequest $request)
     {
-        //
+        try {
+            $input = $request->all();
+            $data = AccommodationType::create($input);
+            return $this->create_response(true, 'ok', $data);
+
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
+
     }
 
     /**
@@ -37,7 +50,7 @@ class AccommodationTypeController extends Controller
      */
     public function show(AccommodationType $accommodationType)
     {
-        //
+
     }
 
     /**
@@ -45,7 +58,7 @@ class AccommodationTypeController extends Controller
      */
     public function edit(AccommodationType $accommodationType)
     {
-        //
+
     }
 
     /**
@@ -53,14 +66,25 @@ class AccommodationTypeController extends Controller
      */
     public function update(UpdateAccommodationTypeRequest $request, AccommodationType $accommodationType)
     {
-        //
+        try {
+            $data = $request->validated();
+            $accommodationType->update($data);
+            return $this->create_response(true, 'ok', $data, 201);
+        } catch (\Exception $e) {
+            return $this->create_response(false, 'Something went wrong, please reload the page and try again', 404);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(AccommodationType $accommodationType)
+    public function destroy(AccommodationType $accommodation_type)
     {
-        //
+        try {
+            $data = $accommodation_type->delete();
+            return $this->create_response(true, 'ok', $data, 201);
+        } catch (\Exception $e) {
+            return $this->create_response(false, $e->getMessage(), 404);
+        }
     }
 }
